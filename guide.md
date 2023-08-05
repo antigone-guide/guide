@@ -6,10 +6,12 @@ Adamanthaea was the Cretan nurse of Zeus who suspended his cradle from a tree th
 
 If Cronos or his henchmen were searching for Zeus on earth, sea or in heaven, here's what would happen:
 
-    places = dict(earth=[], sea=[], heaven[], suspended=['Zeus'])
-    for location in ('earth', 'sea', 'heaven'):
-        if 'Zeus' in location:
-            print(f'Zeus found in {location}')
+```python
+places = dict(earth=[], sea=[], heaven[], suspended=['Zeus'])
+for location in ('earth', 'sea', 'heaven'):
+    if 'Zeus' in location:
+        print(f'Zeus found in {location}')
+```
 
 You can try moving Zeus to earth and see that he will be surely found and likely assasinated, which would change the history of the entire world!
 
