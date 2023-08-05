@@ -19,20 +19,22 @@ Ancients believed that we descend through the cycle of Ages that become progress
 
 And after the Iron age, presumably the cycle would repeat -- we'll repeat it 3 times for illustration:
 
-    ages = ['golden', 'silver', 'bronze', 'iron']
-    n = 0
-    cycle = 0
+```python
+ages = ['golden', 'silver', 'bronze', 'iron']
+n = 0
+cycle = 0
+age = ages[n]
+while 1:
+    print(f'current age: {age}')
+    n+=1
+    if n>3:
+        n = 0
+        cycles+=1
+        print()
+        if cycle>=3:
+            break
     age = ages[n]
-    while 1:
-        print(f'current age: {age}')
-        n+=1
-        if n>3:
-            n = 0
-            cycles+=1
-            print()
-            if cycle>=3:
-                break
-        age = ages[n]
+```
 
 ## Classes
 
@@ -40,6 +42,7 @@ And after the Iron age, presumably the cycle would repeat -- we'll repeat it 3 t
 
 Alcestis was the wife of Admetus. She volunteered to die for her husband on the promise of Apollo that Admetus should never die if someone were found to die in his stead.
 
+```python
     death_record = dict(Alcestis=None, Admetus=None)
 
     class Alcestis:
@@ -66,6 +69,7 @@ Alcestis was the wife of Admetus. She volunteered to die for her husband on the 
     admetus = Admetus()
     alcestis.die('Admetus')
     admetus.die()
+```
 
 Normally, whoever dies will be recorded in the death record, but the `to_record` argument allows you to falsify the record when you are dying. If your record is falsified, you simply won't die!
 
@@ -80,6 +84,7 @@ Amycus was a famous boxer who challenged all travelers to fight him. Those who r
 the sea, those who accepted were killed in the match.  Finally killed by Polydeuces in a match after he
 had refused the Argonauts food and water.
 
+```python
     class Amycus:
         power = 99
 
@@ -109,10 +114,12 @@ had refused the Argonauts food and water.
 
         def agree(self):
             return True
+```
 
 Note that some of the methods can be inherited from the parent class, but for clarity I duplicated some
 methods in each class. Here is a little story of Amycus getting an unpleasant surprice once upon a time:
 
+```python
     amycus = Amycus()
     guy = RandomGuy()
     polydeuces = Polydeuces()
@@ -121,6 +128,7 @@ methods in each class. Here is a little story of Amycus getting an unpleasant su
     # RandomGuy dies
     amycus.fight(polydeuces)
     # oops, Amycus dies
+```
 
 Note also that when fighting an opponent with the same power level, Amycus still loses, I suppose because
 it is sometimes easier to defend and counterattack. But you could also argue that the attacker should get
@@ -135,11 +143,13 @@ Anaxarete was a Greek princess who was loved by Iphis, a man of working class. S
 social difference between them, and in despair Iphis hanged himself on the door of her house. She was
 completely unmoved at his death, and Aphrodite turned her to stone.
 
+```python
     class Anaxarete(): pass
     class Stone(): pass
     locations = [Anaxarete(), None, None, None, None]
 
     locations[0] = Stone()
+```
 
 There are various ways to think of metamorphoses and changes: sometimes it can be a complete change into
 an object, other times it may be outward change in appearance while keeping some or all of internal
@@ -167,6 +177,7 @@ no one can resist the true GOAT and high IQ fighter Heracles, who strangled him 
 ground. This immediately should remind us how Zeus was able to hide from his vengeful father: by not
 being "on earth".
 
+```python
     earth = ['Antaeus']
 
     class Antaeus:
@@ -187,10 +198,12 @@ being "on earth".
 
         def lift_opponent(self, opponent):
             earth.remove(opponent)
+```
 
 
 And so the battle begins:
 
+```python
     antaeus = Antaeus()
     heracles = Heracles()
     antaeus.fight(heracles)
@@ -199,6 +212,7 @@ And so the battle begins:
     antaeus.fight(heracles)
     # Oops, why didn't I chain myself to the ground like Andromeda was chained!! It's too late to
     # complain now
+```
 
 Note how the state of standing directly on the Earth is somewhat arbitrarily signified as being in
 `earth` list. This means that someone using a jump rope would be on Earth and not on Earth and back on
@@ -215,6 +229,7 @@ Persephone could leave the lower world provided she had eaten no food, however P
 she ate some pomegranate seeds, and she was required to divide her time evenly between the lower world
 and the Earth.
 
+```python
     import time
     earth = 0
     underworld = 1
@@ -229,6 +244,7 @@ and the Earth.
         location = earth if location==underworld else underworld
         cycle += 1
         if cycle>10: break
+```
 
 It was actually Ascalapus who informed Pluto (the god of death, not the cartoon dog, just to be clear.).
 I'm not sure why he would do that, why not let the lady eat a few pomegranate seeds? And that's why we
@@ -242,6 +258,7 @@ on him later, and changed their identifying marks.
 Normally, if we compare the cow objects, they will be compared by their `id` which represents the
 location of the object in memory:
 
+```python
     class Cow: pass
 
     cow1, cow2 = Cow(), Cow()
@@ -249,10 +266,12 @@ location of the object in memory:
 
     cow1 == cow1  # True
     cow1 == cow2
+```
 
 Ancient sources are a little hazy, but Sysiphus probably changed the identifying mark of the cows in this
 way.
 
+```python
     class Cow:
         id = None
 
@@ -263,14 +282,18 @@ way.
         cow1.id = 1
         cow2.id = 2
         my_cows = [1,2]
+```
 
 And Autolycus simply changed them up after the cow rustling was done:
 
+```python
     cow1.id = 125
     cow2.id = 126
+```
 
 ### Icarus Flight
 
+```python
     class Wings:
         integrity = 100
 
@@ -299,6 +322,7 @@ And Autolycus simply changed them up after the cow rustling was done:
     for _ in range(10000):
         if icarus.alive:
             icarus.fly()
+```
 
 Icarus, in his arrogance, tried flying higher and higher, closer and closer to the sun and eventually the
 beeswax used to secure his wingsuit disintegrated (I'm not sure beeswax is a suitable material in any
@@ -323,18 +347,21 @@ I was always a bit confused about the Homer's use of Achaeans and Danaans, and o
 I have found the surprising fact that Homer used the names Achaeans, Danaans and Argives with apparent
 impartiality to refer to all Greeks.
 
+```python
     class Hellenes: pass
 
     argives = Hellenes()
     achaeans = argives
     danaans = argives
     argives == achaeans == danaans      # True
+```
 
 ### A rose by a different name...
 
 Dirae or Furiae were daughters of Acheron and Nyx. Some legends maintain they were called Furies in Hell,
 Harpies on Earth, and Dirae in Heaven.
 
+```python
     class Furiae: pass
 
     furiae = Furiae()
@@ -347,6 +374,7 @@ Harpies on Earth, and Dirae in Heaven.
 
     class Heaven:
         dirae = furiae
+```
 
 Each class creates a new namespace. Names created in the namespace only have significance in that
 namespace (and also in enclosed namespaces). So you might get a response of "Dirae who??" outside of
@@ -369,6 +397,7 @@ Aside from that, it's not clear if Paris judged the goddesses in earnest and not
 a big fan of sensual beauty. You can use the famous statues of these goddesses for reference and decide
 for yourself.
 
+```python
     class Athene:
         sensual_beauty = 7
         solemn_beauty = 10
@@ -397,6 +426,7 @@ for yourself.
     paris = Paris()
     winner = paris.judge()
     print('The Winner is', winner)
+```
 
 
 ### The danger of being too good... at disguising yourself
@@ -406,6 +436,7 @@ Dymas was a trojan disguised in armor taken from a dead Greek, accidentally kill
 IFF is a military technology used to identify enemies, in the ancient days it typically used the armor,
 weapons, hairstyles and so forth, as the uniforms came much later.
 
+```python
     from dataclasses import dataclass
 
     @dataclass
@@ -428,6 +459,7 @@ weapons, hairstyles and so forth, as the uniforms came much later.
     trojan1.armor = Armor(is_trojan=True)
     dymas.armor = Armor(is_greek=True)
     trojan1.id(dymas)
+```
 
 ### Trojan Wooden Horse
 
@@ -441,9 +473,11 @@ blueprint at the gates of Illium, it would be a complete disaster (for them, but
 salvation), -- Trojans would be forewarned by examining the blueprint and the siege would fail
 pathetically.
 
+```python
     class WoodenHorse: pass
 
     real_wooden_horse = WoodenHorse()
+```
 
 ### Erigone
 
@@ -452,6 +486,7 @@ drunken shepherds.
 
 This is an illustration of how an object can accept itself as an argument to an action:
 
+```python
     class Erigone:
         def kill(self, other):
             other.die()
@@ -461,11 +496,13 @@ This is an illustration of how an object can accept itself as an argument to an 
 
     erigone = Erigone()
     erigone.kill(erigone)
+```
 
 This reminds me of a nice story of Erisichthon who derided and offended Demeter (don't do that -- do you
 see where this is going?), by cutting down trees in her sacred grove. In revenge, she cursed him with
 such insatiable hunger that at last he ate his own legs, and eventually consumed himself completely.
 
+```python
     class Erisichthon:
         r_leg = l_leg = True
         body = True
@@ -493,6 +530,7 @@ such insatiable hunger that at last he ate his own legs, and eventually consumed
     for _ in range(4):
         erisichthon.super_hunger_eat()
     print(places)
+```
 
 ### Erulus and his triple arms
 
@@ -500,6 +538,7 @@ Erulus was a son of Feronia, goddess of orchards and woods (my favorite goddess)
 mother had given him three lives and triple arms (that is a fetching look). Evander had to kill him 3
 times the same day.
 
+```python
     class Evander:
         def kill(self, other):
             other.die()
@@ -512,6 +551,7 @@ times the same day.
                 lives -= 1
             else:
                 print(f'{self} dies')
+```
 
 
 I've used a list of places to represent some potential location where Erisichthon may be, and when he is
@@ -522,6 +562,7 @@ completely consumed, Erisichthon removes himself.
 AKA Cestus, this "girdle" (scanty drapery) gave any goddess or mortal woman who wore it the power of
 exciting love.
 
+```python
     class Cestus: pass
 
     class Girl:
@@ -537,6 +578,7 @@ exciting love.
     print('girl beauty', girl.beauty())
     girl.girdle = Cestus()
     print('girl beauty', girl.beauty())
+```
 
 ### Call me No Man
 
@@ -544,9 +586,11 @@ Polyphemus was menacing Odysseus and his band, devouring two of them. Odysseus f
 ruse by calling himself "No man", in order that the other cyclops misinterpret it to mean Nobody (or the
 Python value `None`), rather than the Python text string "None":
 
+```python
     name = None
     if not name:
         print('Stop whining, Polyphemus! You have nobody to blame but yourself.')
     name = 'None'
     if name:
         print('We shall help you fight your crafty foe, Polyphemus!')
+```
