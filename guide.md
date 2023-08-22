@@ -546,9 +546,9 @@ class Evander:
 class Erulus:
     lives = 3
     def die(self):
-        if lives:
+        if self.lives:
             print('live another day!')
-            lives -= 1
+            self.lives -= 1
         else:
             print(f'{self} dies')
 ```
